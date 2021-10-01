@@ -23,7 +23,7 @@ class TestA9APostCode(unittest.TestCase):
     # The only letters to appear in the third position are
     # A, B, C, D, E, F, G, H, J, K, P, S, T, U and W when the structure starts with A9A.
     def test_a9a_not_ok(self):
-        data = [
+        codes = [
             'W1I 0AX',
             'W1L 0AX',
             'W1M 0AX',
@@ -36,16 +36,31 @@ class TestA9APostCode(unittest.TestCase):
             'W1Y 0AX',
             'W1Z 0AX',
         ]
-        for d in data:
-            self.assertFalse(postcode.is_valid(d))
+        for code in codes:
+            self.assertFalse(postcode.is_valid(code))
 
 class TestA9PostCode(unittest.TestCase):
+    # Only B, E, G, L, M, N, S, W
     def test_a9(self):
-        self.assertTrue(postcode.is_valid('M1 1AE'))
+        codes = [
+            'B8 0AX',
+            'E8 0AX',
+            'G8 0AX',
+            'L8 0AX',
+            'M8 0AX',
+            'N8 0AX',
+            'S8 0AX',
+            'W8 0AX',
+        ]
+        for code in codes:
+            self.assertTrue(postcode.is_valid(code))
+    def test_a9_not_ok(self):
+        self.assertFalse(postcode.is_valid('Y8 1PY'))
 
 class TestA99PostCode(unittest.TestCase):
     def test_a99(self):
         self.assertTrue(postcode.is_valid('B33 8TH'))
+    # TODO: Add more tests
 
 class TestAA9PostCode(unittest.TestCase):
     def test_aa9(self):
@@ -91,7 +106,7 @@ class Test9AAInwardCode(unittest.TestCase):
     # The final two letters do not use C, I, K, M, O or V,
     # so as not to resemble digits or each other when hand-written.
     def test_disallowed_character(self):
-        data = [
+        codes = [
             'W1I 0CX',
             'W1L 0IX',
             'W1M 0KX',
@@ -105,8 +120,8 @@ class Test9AAInwardCode(unittest.TestCase):
             'W1O 0XO',
             'W1Q 0XV',
         ]
-        for d in data:
-            self.assertFalse(postcode.is_valid(d))
+        for code in codes:
+            self.assertFalse(postcode.is_valid(code))
     def test_inner_incomplete(self):
         self.assertFalse(postcode.is_valid('B33 8T'))
 
