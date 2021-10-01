@@ -1,4 +1,4 @@
-A super simple and small UK post code validation library. No dependencies required!
+A super simple and small UK postcode validation library. No dependencies required!
 
 See more info about the UK postcode format [here](https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom).
 
