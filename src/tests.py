@@ -70,9 +70,8 @@ class TestAA9PostCode(unittest.TestCase):
     def test_single_digit_district_only_ok(self):
         self.assertTrue(postcode.is_valid('FY1 1PY'))
     def test_single_digit_district_only_not_ok(self):
-        # TODO: This is not caught is invalid due to:
+        # FIXME: The below postcode is invalid but the regex below passes it:
         # ^(([A-Z]{1,2}[0-9][A-Z0-9]?|ASCN|STHL|TDCU|BBND|[BFS]IQQ|PCRN|TKCA) ?[0-9][A-Z]{2}|BFPO ?[0-9]{1,4}|(KY[0-9]|MSR|VG|AI)[ -]?[0-9]{4}|[A-Z]{2} ?[0-9]{2}|GE ?CX|GIR
-        # But I am not going to fix that!
         self.assertFalse(postcode.is_valid('FY11 1PY'))
     # Areas with a district '0' (zero): BL, BS, CM, CR, FY, HA, PR, SL, SS
     def test_zero_district_only_ok(self):
